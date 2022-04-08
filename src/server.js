@@ -2,13 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const { port } = require("./config");
 const { findById } = require("./helper/helper");
+const { posts } = require("./data/db");
 const app = express();
 
-//Middleware
+// Middleware
 app.use(cors()); // nebutu CORS error jungianti is front
 app.use(express.json()); // BA gali matyti atkoduota json formatu atsiustus duomenis
-
-const { posts } = require("./data/db");
 
 app.get("/", (request, response) => {
   response.json("Hello world");
@@ -31,9 +30,9 @@ app.get("/api/posts/3", (request, response) => {
 
 app.post("/api/posts", (request, response) => {
   const newPostObj = request.body;
-  console.log("newPostObj===", newPostObj);
-  //idedam nauja obj i masyva
-  //UZD1 - generuoti didejanti ID ir prideti ji prie newPostObj
+  console.log("newPostObj ===", newPostObj);
+  // idedam nauja obj i masyva
+  // UZD1 - generuoti didejanti ID ir prideti ji prie newPostObj
   posts.push(newPostObj);
   response.status(201).json({
     success: true,
