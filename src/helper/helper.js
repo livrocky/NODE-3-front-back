@@ -13,7 +13,7 @@ function lg(el) {
 function findById(arr, givenId) {
   const foundObj = arr.find((elObj) => elObj.id === givenId);
 
-  foundObj === undefined ? false : foundObj;
+  return foundObj === undefined ? false : foundObj;
 }
 
 module.exports = {
